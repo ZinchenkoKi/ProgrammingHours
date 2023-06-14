@@ -1,20 +1,16 @@
 using System;
 using System.Windows.Forms;
-using HoursOfProgramming.LogicalPart;
-using HoursOfProgramming.TimerData;
-using HoursOfProgramming.VsualPart;
+using HoursOfProgramming.DomainModel;
+using HoursOfProgramming.Presentation;
+using HoursOfProgramming.UI;
 
 namespace HoursOfProgramming
 {
     public partial class Form1 : Form
     {
-        OutputAllHours allHours = new OutputAllHours();
         TimeInFile timeInFile = new TimeInFile();
-        StartingTimer startingTimer = new StartingTimer();
-        StopwatchTick tick = new StopwatchTick();
         TimeInApp timeInApp = new TimeInApp();
-        ClosingApplication closingApplication = new ClosingApplication();
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -22,22 +18,26 @@ namespace HoursOfProgramming
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            allHours.Output(timeInFile, label7);
+            var hours = new Hours(timeInFile);
+            hours.Get(label7);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            startingTimer.Start(timer1,button1);
+            var startingTimer = new StartingTimer();
+            startingTimer.Start(timer1, button1);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            tick.Tick(timeInApp, label1, label2, label3);
+            var tick = new Stopwatch(timeInApp);
+            tick.Update(label1, label2, label3);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            closingApplication.Close(timeInFile, timeInApp);
+            var closingApplication = new ClosingApplication(timeInFile, timeInApp);
+            closingApplication.Close(timeInApp);
         }
     }
 }

@@ -5,17 +5,27 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>icons\11clock.ico</ApplicationIcon>
+    <ApplicationIcon>UI\icons\Mainform icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="icons\11clock.ico" />
+    <Compile Remove="UI\icons\**" />
+    <EmbeddedResource Remove="UI\icons\**" />
+    <None Remove="UI\icons\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="UI\icons\Mainform icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="PathFile">
       <HintPath>..\..\..\PathFile\PathFile\bin\Debug\PathFile.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Tests\" />
   </ItemGroup>
 
 </Project>

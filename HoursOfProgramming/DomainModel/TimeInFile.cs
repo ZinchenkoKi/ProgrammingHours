@@ -1,4 +1,4 @@
-﻿namespace HoursOfProgramming.TimerData
+﻿namespace HoursOfProgramming.DomainModel
 {
     public class TimeInFile
     {
