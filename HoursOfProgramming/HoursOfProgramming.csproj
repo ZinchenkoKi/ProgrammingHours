@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>icons\11clock.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="icons\11clock.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PathFile">
+      <HintPath>..\..\..\PathFile\PathFile\bin\Debug\PathFile.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
