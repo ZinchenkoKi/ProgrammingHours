@@ -1,43 +1,88 @@
 using System;
 using System.Windows.Forms;
-using HoursOfProgramming.DomainModel;
-using HoursOfProgramming.Presentation;
-using HoursOfProgramming.UI;
+using HoursOfProgramming.View;
+using HoursOfProgramming.Model;
+using HoursOfProgramming.Presenter;
+using HoursOfProgramming.Model.Data;
+using HoursOfProgramming.Model.Stopwatchs;
+using HoursOfProgramming.Model.ExitApplication;
 
 namespace HoursOfProgramming
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IStopwatch, ITime, IAllHours
     {
         TimeInFile timeInFile = new TimeInFile();
         TimeInApp timeInApp = new TimeInApp();
-        
+
+        public string Start
+        {
+            get => ButtonStart.Text;
+            set => ButtonStart.Text = value;
+        }
+
+        public bool TimerEnabled
+        {
+            get => Timer.Enabled;
+            set => Timer.Enabled = value;
+        }
+
+        public string Hours
+        {
+            get => HoursLabel.Text;
+            set => HoursLabel.Text = value;
+        }
+
+        public string Minutes
+        {
+            get => MinutesLabel.Text;
+            set => MinutesLabel.Text = value;
+        }
+
+        public string Seconds
+        {
+            get => SecondsLabel.Text;
+            set => SecondsLabel.Text = value;
+        }
+
+        public string MaximumHours 
+        { 
+            set => AllHours.Text = value;
+        }
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
             var hours = new Hours(timeInFile);
-            hours.Get(label7);
+            timeInFile = hours.Get();
+            MaximumHours = timeInFile.HoursInFile.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void StopwatchStart(object sender, EventArgs e)
         {
-            var startingTimer = new StartingTimer();
-            startingTimer.Start(timer1, button1);
+            var state = new StopwatchState();
+            var stopwatcOn = new StopwatchOn(this);
+            state = stopwatcOn.Start();
+            Start = state.Text;
+            TimerEnabled = state.TimerEnabled;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void TimerTick(object sender, EventArgs e)
         {
-            var tick = new Stopwatch(timeInApp);
-            tick.Update(label1, label2, label3);
+            var tick = new StopwatchTick(timeInApp);
+            timeInApp = tick.Update();
+            Hours = timeInApp.Hours.ToString();
+            Minutes = timeInApp.Minutes.ToString();
+            Seconds = timeInApp.Seconds.ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CloseApplication(object sender, EventArgs e)
         {
-            var closingApplication = new ClosingApplication(timeInFile, timeInApp);
-            closingApplication.Close(timeInApp);
+            var closingApplication = new ExitingApplication(timeInFile, timeInApp);
+            closingApplication.GoOut();
         }
     }
 }

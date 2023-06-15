@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace HoursOfProgramming.Presentation
+namespace HoursOfProgramming.Model
 {
     internal static class Program
     {

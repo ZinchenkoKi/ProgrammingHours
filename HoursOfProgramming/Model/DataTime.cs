@@ -1,23 +1,33 @@
 ﻿using System;
 using System.IO;
-using HoursOfProgramming.DomainModel;
+using HoursOfProgramming.Model.Data;
 
-
-namespace HoursOfProgramming.Presentation
+namespace HoursOfProgramming.Model
 {
-    internal class Data
+    internal class DataTime
     {
         private TimeInFile _timeInFile;
+        private TimeInApp _timeInApp;
+        private string Path;
 
-        public Data(TimeInFile timeInFile)
+        public DataTime(TimeInFile timeInFile)
         {
+            var path = new DataPath();
+            Path = path.GetPath();
             _timeInFile = timeInFile;
         }
 
-
-        public TimeInFile Reading(string path)
+        public DataTime(TimeInFile timeInFile, TimeInApp timeInApp)
         {
-            using (StreamReader reader = new StreamReader(path))
+            var path = new DataPath();
+            Path = path.GetPath();
+            _timeInFile = timeInFile;
+            _timeInApp = timeInApp;
+        }
+
+        public TimeInFile Reading()
+        {
+            using (StreamReader reader = new StreamReader(Path))
             {
                 _timeInFile.HoursInFile = Convert.ToInt32(reader.ReadLine());
                 _timeInFile.MinutesInFile = Convert.ToInt32(reader.ReadLine());
@@ -28,6 +38,7 @@ namespace HoursOfProgramming.Presentation
 
         public TimeInFile Recalculating()
         {
+            _timeInFile = Sum();
             if (_timeInFile.SecondsInFile > 59)
             {
                 _timeInFile.MinutesInFile += _timeInFile.SecondsInFile / 60;
@@ -41,14 +52,22 @@ namespace HoursOfProgramming.Presentation
             return _timeInFile;
         }
 
-        public void Writing(string path)
+        public void Writing()
         {
-            using (StreamWriter writer = new StreamWriter(path, false))
+            using (StreamWriter writer = new StreamWriter(Path, false))
             {
                 writer.WriteLine(_timeInFile.HoursInFile);
                 writer.WriteLine(_timeInFile.MinutesInFile);
                 writer.WriteLine(_timeInFile.SecondsInFile);
             }
+        }
+
+        private TimeInFile Sum()
+        {
+            _timeInFile.SecondsInFile += _timeInApp.Seconds;
+            _timeInFile.MinutesInFile += _timeInApp.Minutes;
+            _timeInFile.HoursInFile += _timeInApp.Hours;
+            return _timeInFile;
         }
     }
 }

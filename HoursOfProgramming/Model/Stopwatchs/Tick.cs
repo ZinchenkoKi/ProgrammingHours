@@ -1,6 +1,6 @@
-﻿using HoursOfProgramming.DomainModel;
+﻿using HoursOfProgramming.Model.Data;
 
-namespace HoursOfProgramming.Presentation
+namespace HoursOfProgramming.Model.Stopwatchs
 {
     public class Tick
     {
@@ -14,12 +14,12 @@ namespace HoursOfProgramming.Presentation
         public TimeInApp Update()
         {
             _timeInApp.Seconds++;
-            if (IsDozens(_timeInApp.Seconds))
+            if (IsCorrect(_timeInApp.Seconds))
             {
                 _timeInApp.Minutes++;
                 _timeInApp.Seconds = 0;
             }
-            if (IsDozens(_timeInApp.Minutes))
+            if (IsCorrect(_timeInApp.Minutes))
             {
                 _timeInApp.Hours++;
                 _timeInApp.Minutes = 0;
@@ -27,7 +27,7 @@ namespace HoursOfProgramming.Presentation
             return _timeInApp;
         }
 
-        private bool IsDozens(int values)
+        private bool IsCorrect(int values)
         {
             return values > 59;
         }

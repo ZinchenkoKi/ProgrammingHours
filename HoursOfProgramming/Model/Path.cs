@@ -2,29 +2,30 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace HoursOfProgramming.Presentation
+namespace HoursOfProgramming.Model
 {
     public class DataPath
     {
         public string GetPath()
         {
             string baseFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string appStorageFolder = Path.Combine(baseFolder, "StopwatchData.txt");
+            string fileName = "StopwatchData.txt";
+            string appStorageFolder = Path.Combine(baseFolder, fileName);
 
-            if (CheckingForExistence(appStorageFolder))
+            if (IsExistence(appStorageFolder))
             {
                 return appStorageFolder;
             }
             else
             {
-                CreateFile(appStorageFolder, baseFolder);
+                Create(appStorageFolder, baseFolder);
                 return appStorageFolder;
             }
         }
 
-        private bool CheckingForExistence(string appStorageFolder)
+        private bool IsExistence(string appStorageFolder)
         {
-            FileInfo fileInfo = new FileInfo(appStorageFolder);
+            var fileInfo = new FileInfo(appStorageFolder);
 
             if (fileInfo.Exists)
             {
@@ -33,7 +34,7 @@ namespace HoursOfProgramming.Presentation
             return false;
         }
 
-        private void CreateFile(string appStorageFolder, string baseFolder)
+        private void Create(string appStorageFolder, string baseFolder)
         {
             using (FileStream file = File.Create(appStorageFolder)) { }
             MessageBox.Show($"В папке -> {baseFolder} был создан файл StopwatchData.txt");

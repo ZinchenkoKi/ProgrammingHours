@@ -34,18 +34,18 @@ namespace HoursOfProgramming
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            HoursLabel = new Label();
+            MinutesLabel = new Label();
+            SecondsLabel = new Label();
             label4 = new Label();
             label5 = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
             tableLayoutPanel4 = new TableLayoutPanel();
             label6 = new Label();
-            label7 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            timer1 = new Timer(components);
+            this.AllHours = new Label();
+            ButtonStart = new Button();
+            ButtonClose = new Button();
+            Timer = new Timer(components);
             openFileDialog1 = new OpenFileDialog();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -78,9 +78,9 @@ namespace HoursOfProgramming
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.11111F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.22222F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.555555F));
-            tableLayoutPanel2.Controls.Add(label1, 1, 0);
-            tableLayoutPanel2.Controls.Add(label2, 3, 0);
-            tableLayoutPanel2.Controls.Add(label3, 5, 0);
+            tableLayoutPanel2.Controls.Add(HoursLabel, 1, 0);
+            tableLayoutPanel2.Controls.Add(MinutesLabel, 3, 0);
+            tableLayoutPanel2.Controls.Add(SecondsLabel, 5, 0);
             tableLayoutPanel2.Controls.Add(label4, 2, 0);
             tableLayoutPanel2.Controls.Add(label5, 4, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
@@ -91,47 +91,47 @@ namespace HoursOfProgramming
             tableLayoutPanel2.Size = new System.Drawing.Size(478, 124);
             tableLayoutPanel2.TabIndex = 0;
             // 
-            // label1
+            // HoursLabel
             // 
-            label1.AutoSize = true;
-            label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            label1.Dock = DockStyle.Fill;
-            label1.Font = new System.Drawing.Font("Agency FB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            label1.Location = new System.Drawing.Point(29, 0);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(100, 124);
-            label1.TabIndex = 0;
-            label1.Text = "00";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            HoursLabel.AutoSize = true;
+            HoursLabel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            HoursLabel.Dock = DockStyle.Fill;
+            HoursLabel.Font = new System.Drawing.Font("Agency FB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            HoursLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            HoursLabel.Location = new System.Drawing.Point(29, 0);
+            HoursLabel.Name = "HoursLabel";
+            HoursLabel.Size = new System.Drawing.Size(100, 124);
+            HoursLabel.TabIndex = 0;
+            HoursLabel.Text = "00";
+            HoursLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // MinutesLabel
             // 
-            label2.AutoSize = true;
-            label2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            label2.Dock = DockStyle.Fill;
-            label2.Font = new System.Drawing.Font("Agency FB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            label2.Location = new System.Drawing.Point(188, 0);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(100, 124);
-            label2.TabIndex = 1;
-            label2.Text = "00";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            MinutesLabel.AutoSize = true;
+            MinutesLabel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            MinutesLabel.Dock = DockStyle.Fill;
+            MinutesLabel.Font = new System.Drawing.Font("Agency FB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            MinutesLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            MinutesLabel.Location = new System.Drawing.Point(188, 0);
+            MinutesLabel.Name = "MinutesLabel";
+            MinutesLabel.Size = new System.Drawing.Size(100, 124);
+            MinutesLabel.TabIndex = 1;
+            MinutesLabel.Text = "00";
+            MinutesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // SecondsLabel
             // 
-            label3.AutoSize = true;
-            label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            label3.Dock = DockStyle.Fill;
-            label3.Font = new System.Drawing.Font("Agency FB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            label3.Location = new System.Drawing.Point(347, 0);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(100, 124);
-            label3.TabIndex = 2;
-            label3.Text = "00";
-            label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            SecondsLabel.AutoSize = true;
+            SecondsLabel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            SecondsLabel.Dock = DockStyle.Fill;
+            SecondsLabel.Font = new System.Drawing.Font("Agency FB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            SecondsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            SecondsLabel.Location = new System.Drawing.Point(347, 0);
+            SecondsLabel.Name = "SecondsLabel";
+            SecondsLabel.Size = new System.Drawing.Size(100, 124);
+            SecondsLabel.TabIndex = 2;
+            SecondsLabel.Text = "00";
+            SecondsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -168,8 +168,8 @@ namespace HoursOfProgramming
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33333F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33333F));
             tableLayoutPanel3.Controls.Add(tableLayoutPanel4, 1, 0);
-            tableLayoutPanel3.Controls.Add(button1, 0, 0);
-            tableLayoutPanel3.Controls.Add(button2, 2, 0);
+            tableLayoutPanel3.Controls.Add(ButtonStart, 0, 0);
+            tableLayoutPanel3.Controls.Add(ButtonClose, 2, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new System.Drawing.Point(3, 133);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -183,7 +183,7 @@ namespace HoursOfProgramming
             tableLayoutPanel4.ColumnCount = 1;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.Controls.Add(label6, 0, 0);
-            tableLayoutPanel4.Controls.Add(label7, 0, 1);
+            tableLayoutPanel4.Controls.Add(this.AllHours, 0, 1);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new System.Drawing.Point(162, 3);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -207,56 +207,56 @@ namespace HoursOfProgramming
             label6.Text = "HOP";
             label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // MaximumHours
             // 
-            label7.AutoSize = true;
-            label7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            label7.Dock = DockStyle.Fill;
-            label7.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            label7.Location = new System.Drawing.Point(3, 59);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(147, 60);
-            label7.TabIndex = 1;
-            label7.Text = "00";
-            label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AllHours.AutoSize = true;
+            this.AllHours.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AllHours.Dock = DockStyle.Fill;
+            this.AllHours.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AllHours.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AllHours.Location = new System.Drawing.Point(3, 59);
+            this.AllHours.Name = "MaximumHours";
+            this.AllHours.Size = new System.Drawing.Size(147, 60);
+            this.AllHours.TabIndex = 1;
+            this.AllHours.Text = "00";
+            this.AllHours.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // ButtonStart
             // 
-            button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            button1.Dock = DockStyle.Fill;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            button1.Location = new System.Drawing.Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(153, 119);
-            button1.TabIndex = 1;
-            button1.Text = "START";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            ButtonStart.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            ButtonStart.Dock = DockStyle.Fill;
+            ButtonStart.FlatAppearance.BorderSize = 0;
+            ButtonStart.FlatStyle = FlatStyle.Flat;
+            ButtonStart.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            ButtonStart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            ButtonStart.Location = new System.Drawing.Point(3, 3);
+            ButtonStart.Name = "ButtonStart";
+            ButtonStart.Size = new System.Drawing.Size(153, 119);
+            ButtonStart.TabIndex = 1;
+            ButtonStart.Text = "START";
+            ButtonStart.UseVisualStyleBackColor = false;
+            ButtonStart.Click += StopwatchStart;
             // 
-            // button2
+            // ButtonClose
             // 
-            button2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            button2.Dock = DockStyle.Fill;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            button2.Location = new System.Drawing.Point(321, 3);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(154, 119);
-            button2.TabIndex = 2;
-            button2.Text = "EXIT";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            ButtonClose.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            ButtonClose.Dock = DockStyle.Fill;
+            ButtonClose.FlatAppearance.BorderSize = 0;
+            ButtonClose.FlatStyle = FlatStyle.Flat;
+            ButtonClose.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            ButtonClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            ButtonClose.Location = new System.Drawing.Point(321, 3);
+            ButtonClose.Name = "ButtonClose";
+            ButtonClose.Size = new System.Drawing.Size(154, 119);
+            ButtonClose.TabIndex = 2;
+            ButtonClose.Text = "EXIT";
+            ButtonClose.UseVisualStyleBackColor = false;
+            ButtonClose.Click += CloseApplication;
             // 
-            // timer1
+            // Timer
             // 
-            timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick;
+            Timer.Interval = 1000;
+            Timer.Tick += TimerTick;
             // 
             // openFileDialog1
             // 
@@ -273,7 +273,7 @@ namespace HoursOfProgramming
             MinimumSize = new System.Drawing.Size(500, 300);
             Name = "Form1";
             Text = "HOP";
-            Load += Form1_Load;
+            Load += FormLoad;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
@@ -289,16 +289,16 @@ namespace HoursOfProgramming
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel4;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private Label HoursLabel;
+        private Label MinutesLabel;
+        private Label SecondsLabel;
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
-        private Button button1;
-        private Button button2;
-        private System.Windows.Forms.Timer timer1;
+        private Label AllHours;
+        private Button ButtonStart;
+        private Button ButtonClose;
+        private System.Windows.Forms.Timer Timer;
         private OpenFileDialog openFileDialog1;
     }
 }

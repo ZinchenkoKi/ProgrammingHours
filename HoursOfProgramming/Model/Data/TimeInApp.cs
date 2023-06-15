@@ -1,4 +1,4 @@
-﻿namespace HoursOfProgramming.DomainModel
+﻿namespace HoursOfProgramming.Model.Data
 {
     public class TimeInApp
     {
