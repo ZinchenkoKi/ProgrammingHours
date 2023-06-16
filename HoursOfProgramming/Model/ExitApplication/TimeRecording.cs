@@ -2,7 +2,10 @@
 
 namespace HoursOfProgramming.Model.ExitApplication
 {
-
+    /// <summary>
+    /// Производит подсчет времени в файле 
+    /// с помощью класса DataTime.
+    /// </summary>
     public class TimeRecording
     {
         private TimeInFile _timeInFile;
@@ -14,6 +17,9 @@ namespace HoursOfProgramming.Model.ExitApplication
             _timeInApp = timeInApp;
         }
 
+        /// <summary>
+        /// Считает и записывает время в файл.
+        /// </summary>
         public void ProduceRecord()
         {
             var data = new DataTime(_timeInFile, _timeInApp);

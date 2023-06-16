@@ -11,6 +11,10 @@ namespace HoursOfProgramming.Model.Stopwatchs
             _timeInApp = timeInApp;
         }
 
+        /// <summary>
+        /// Обновляет время каждую секунду.
+        /// </summary>
+        /// <returns> Возвращает обновленный экземпляр класса TimeInApp </returns>
         public TimeInApp Update()
         {
             _timeInApp.Seconds++;
@@ -27,6 +31,11 @@ namespace HoursOfProgramming.Model.Stopwatchs
             return _timeInApp;
         }
 
+        /// <summary>
+        /// Проверяет корректность записи времени.
+        /// </summary>
+        /// <param name="values"> Показатель времени </param>
+        /// <returns></returns>
         private bool IsCorrect(int values)
         {
             return values > 59;

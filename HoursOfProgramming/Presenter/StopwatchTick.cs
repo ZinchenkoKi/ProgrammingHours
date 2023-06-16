@@ -3,6 +3,9 @@ using HoursOfProgramming.Model.Stopwatchs;
 
 namespace HoursOfProgramming.Presenter
 {
+    /// <summary>
+    /// Запускает секундомер
+    /// </summary>
     public class StopwatchTick
     {
         private TimeInApp _timeInApp;

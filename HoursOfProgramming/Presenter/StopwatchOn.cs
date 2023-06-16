@@ -3,6 +3,9 @@ using HoursOfProgramming.Model.Stopwatchs;
 
 namespace HoursOfProgramming.Presenter
 {
+    /// <summary>
+    /// Меняет текст кнопки и включает таймер
+    /// </summary>
     internal class StopwatchOn
     {
         private IStopwatch _stopwatch;
@@ -15,7 +18,7 @@ namespace HoursOfProgramming.Presenter
         public StopwatchState Start()
         {
             var stopwatch = new Stopwatch();
-            return stopwatch.Start(_stopwatch.Start,_stopwatch.TimerEnabled);
+            return stopwatch.Start(_stopwatch.Start, _stopwatch.TimerEnabled);
         }
     }
 }

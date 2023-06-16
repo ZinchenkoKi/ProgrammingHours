@@ -3,6 +3,9 @@ using HoursOfProgramming.Model.Data;
 
 namespace HoursOfProgramming.Model.ExitApplication
 {
+    /// <summary>
+    /// Класс сохраняет показания таймера и после закрывает приложение.
+    /// </summary>
     public class ExitingApplication
     {
         private TimeInFile _timeInFile;

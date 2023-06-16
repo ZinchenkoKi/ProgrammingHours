@@ -4,8 +4,15 @@ using System.Windows.Forms;
 
 namespace HoursOfProgramming.Model
 {
+    /// <summary>
+    /// Получает путь к файлу.
+    /// </summary>
     public class DataPath
     {
+        /// <summary>
+        /// Получает путь к файлу из папки Документы.
+        /// </summary>
+        /// <returns></returns>
         public string GetPath()
         {
             string baseFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -23,17 +30,23 @@ namespace HoursOfProgramming.Model
             }
         }
 
+        /// <summary>
+        /// Проверяе существование файла
+        /// </summary>
+        /// <param name="appStorageFolder"> Путь к файлу </param>
+        /// <returns> Возвращает bool значение создан файл или нет </returns>
         private bool IsExistence(string appStorageFolder)
         {
             var fileInfo = new FileInfo(appStorageFolder);
 
-            if (fileInfo.Exists)
-            {
-                return true;
-            }
-            return false;
+            return fileInfo.Exists;
         }
 
+        /// <summary>
+        /// Создает файл
+        /// </summary>
+        /// <param name="appStorageFolder"></param>
+        /// <param name="baseFolder"></param>
         private void Create(string appStorageFolder, string baseFolder)
         {
             using (FileStream file = File.Create(appStorageFolder)) { }

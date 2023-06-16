@@ -1,5 +1,8 @@
 ﻿namespace HoursOfProgramming.Model.Data
 {
+    /// <summary>
+    /// Содержит показатели часов минут и секунд.
+    /// </summary>
     public class TimeInApp
     {
         public int Hours { get; set; }
