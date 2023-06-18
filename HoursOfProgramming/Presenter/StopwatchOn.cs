@@ -15,6 +15,7 @@ namespace HoursOfProgramming.Presenter
             _stopwatch = stopwatch;
         }
 
+
         public StopwatchState Start()
         {
             var stopwatch = new Stopwatch();

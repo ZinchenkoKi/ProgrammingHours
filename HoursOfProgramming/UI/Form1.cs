@@ -5,13 +5,11 @@ using HoursOfProgramming.Model;
 using HoursOfProgramming.Presenter;
 using HoursOfProgramming.Model.Data;
 using HoursOfProgramming.Model.Stopwatchs;
-using HoursOfProgramming.Model.ExitApplication;
 
 namespace HoursOfProgramming
 {
     public partial class Form1 : Form, IStopwatch, ITime, IAllHours
     {
-        TimeInFile timeInFile = new TimeInFile();
         TimeInApp timeInApp = new TimeInApp();
 
         public string Start
@@ -56,9 +54,10 @@ namespace HoursOfProgramming
 
         private void FormLoad(object sender, EventArgs e)
         {
-            var hours = new Hours(timeInFile);
-            timeInFile = hours.Get();
-            MaximumHours = timeInFile.HoursInFile.ToString();
+            var path = new FilePath();
+            var read = new Read(path);
+            var launch = new StopwatchLaunch(read);
+            MaximumHours = launch.Start();
         }
 
         private void StopwatchStart(object sender, EventArgs e)
@@ -72,8 +71,10 @@ namespace HoursOfProgramming
 
         private void TimerTick(object sender, EventArgs e)
         {
-            var tick = new StopwatchTick(timeInApp);
-            timeInApp = tick.Update();
+            var tick = new Tick(timeInApp);
+            var correct = new CorrectData();
+            var stopwatch = new StopwatchTick(tick, correct);
+            timeInApp = stopwatch.Tick();
             Hours = timeInApp.Hours.ToString();
             Minutes = timeInApp.Minutes.ToString();
             Seconds = timeInApp.Seconds.ToString();
@@ -81,8 +82,13 @@ namespace HoursOfProgramming
 
         private void CloseApplication(object sender, EventArgs e)
         {
-            var closingApplication = new ExitingApplication(timeInFile, timeInApp);
-            closingApplication.GoOut();
+            var correct = new CorrectData();
+            var path = new FilePath();
+            var read = new Read(path);
+            var record = new Record(path);
+            var recount = new Recount(correct);
+            var stopwatch = new StopwatchClose(timeInApp, read, record, recount);
+            stopwatch.Close();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HoursOfProgramming.View;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -7,12 +8,12 @@ namespace HoursOfProgramming.Model
     /// <summary>
     /// Получает путь к файлу.
     /// </summary>
-    public class DataPath
+    public class FilePath : IFilePath
     {
         /// <summary>
         /// Получает путь к файлу из папки Документы.
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Путь к файлу </returns>
         public string GetPath()
         {
             string baseFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);

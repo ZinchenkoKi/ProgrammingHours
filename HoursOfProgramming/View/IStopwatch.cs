@@ -1,5 +1,4 @@
 ﻿
-
 namespace HoursOfProgramming.View
 {
     public interface IStopwatch

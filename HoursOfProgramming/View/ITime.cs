@@ -1,5 +1,4 @@
-﻿using HoursOfProgramming.Model;
-
+﻿
 namespace HoursOfProgramming.View
 {
     internal interface ITime

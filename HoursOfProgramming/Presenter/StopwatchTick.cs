@@ -1,5 +1,5 @@
 ﻿using HoursOfProgramming.Model.Data;
-using HoursOfProgramming.Model.Stopwatchs;
+using HoursOfProgramming.View;
 
 namespace HoursOfProgramming.Presenter
 {
@@ -9,16 +9,29 @@ namespace HoursOfProgramming.Presenter
     public class StopwatchTick
     {
         private TimeInApp _timeInApp;
+        private ICorrect _correct;
+        private ITick _tick;
 
-        public StopwatchTick(TimeInApp timeInApp) 
+        public StopwatchTick(ITick tick, ICorrect correct) 
         {
-            _timeInApp = timeInApp;
+            _timeInApp = new TimeInApp();   
+            _correct = correct;
+            _tick = tick;
         }
 
-        public TimeInApp Update()
+        public TimeInApp Tick()
         {
-            var tick = new Tick(_timeInApp);
-            _timeInApp = tick.Update();
+            _timeInApp = _tick.Update();
+            if (_correct.IsCorrect(_timeInApp.Seconds))
+            {
+                _timeInApp.Minutes++;
+                _timeInApp.Seconds = 0;
+            }
+            if (_correct.IsCorrect(_timeInApp.Minutes))
+            {
+                _timeInApp.Hours++;
+                _timeInApp.Minutes = 0;
+            }
             return _timeInApp;
         }
     }

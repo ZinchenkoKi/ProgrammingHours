@@ -5,8 +5,8 @@
     /// </summary>
     public class TimeInFile
     {
-        public int HoursInFile { get; set; }
-        public int MinutesInFile { get; set; }
-        public int SecondsInFile { get; set; }
+        public int Hours { get; set; }
+        public int Minutes { get; set; }
+        public int Seconds { get; set; }
     }
 }
