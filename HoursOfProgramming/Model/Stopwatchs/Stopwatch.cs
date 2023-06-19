@@ -3,7 +3,7 @@
 namespace HoursOfProgramming.Model.Stopwatchs
 {
     /// <summary>
-    /// Производит запуск и остановку секундомера.
+    /// Запуускает секундомер.
     /// Изменяет текст кнопки Старт.
     /// </summary>
     public class Stopwatch
@@ -17,7 +17,7 @@ namespace HoursOfProgramming.Model.Stopwatchs
 
         /// <summary>
         /// Запускает и останавливает секунодмер.
-        /// Возвращает класс StopwatchState с именем кнопки состоянием таймера.
+        /// 
         /// </summary>
         /// <param name="text"> Текст кнопки Старт </param>
         /// <param name="timerEnabled">Состояние таймера</param>
@@ -38,7 +38,7 @@ namespace HoursOfProgramming.Model.Stopwatchs
         /// Проверяет запущен таймер или нет.
         /// </summary>
         /// <param name="text"> Текст кнопки Старт </param>
-        /// <returns></returns>
+        /// <returns>Возвращает bool состояние кнопки</returns>
         public bool IsActive(string text)
         {
             return text == "START";

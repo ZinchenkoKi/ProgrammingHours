@@ -11,6 +11,11 @@ namespace HoursOfProgramming.Model
             _correct = correct;
         }
 
+        /// <summary>
+        /// Переводит показания в корректный временной формат
+        /// </summary>
+        /// <param name="timeInApp"></param>
+        /// <param name="timeInFile"></param>
         public ITimeData Recalculate(ITimeData timeInApp, ITimeData timeInFile)
         {
             timeInFile = Sum(timeInApp, timeInFile);
@@ -27,6 +32,11 @@ namespace HoursOfProgramming.Model
             return timeInFile;
         }
 
+        /// <summary>
+        /// Суммирует показатели из файла и приложения
+        /// </summary>
+        /// <param name="timeInApp"></param>
+        /// <param name="timeInFile"></param>
         private ITimeData Sum(ITimeData timeInApp, ITimeData timeInFile)
         {
             timeInFile.Seconds += timeInApp.Seconds;

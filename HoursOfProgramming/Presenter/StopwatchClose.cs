@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace HoursOfProgramming.Presenter
 {
+    /// <summary>
+    /// Закрывает приложение
+    /// </summary>
     public class StopwatchClose
     {
         private ITimeData _timeInApp;
@@ -19,6 +22,10 @@ namespace HoursOfProgramming.Presenter
             _record = record;
         }
 
+        /// <summary>
+        /// Записывает данные в файл и закрывает приложение. 
+        /// </summary>
+        /// <param name="_recount"></param>
         public void Close(IRecount _recount)
         {
             _timeInFile = GetFileData();

@@ -5,6 +5,9 @@ using System.IO;
 
 namespace HoursOfProgramming.Model
 {
+    /// <summary>
+    /// Считывает данные из файла
+    /// </summary>
     public class Read : IRead
     {
         private TimeInFile _timeInFile;
@@ -29,6 +32,10 @@ namespace HoursOfProgramming.Model
             return _timeInFile;
         }
 
+        /// <summary>
+        /// Получает путь к файлу
+        /// </summary>
+        /// <returns> Возвращает строку в которой хранится путь к файлу</returns>
         private string GetPath()
         {
             return _filePath.GetPath();

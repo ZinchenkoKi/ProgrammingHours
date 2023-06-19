@@ -3,7 +3,10 @@ using HoursOfProgramming.View;
 
 namespace HoursOfProgramming.Model
 {
-    internal class Record : IRecord 
+    /// <summary>
+    /// Записывает данне в файл
+    /// </summary>
+    public class Record : IRecord 
     {
         private IFilePath _filePath;
 

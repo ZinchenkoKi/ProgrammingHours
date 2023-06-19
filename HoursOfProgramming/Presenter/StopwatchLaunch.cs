@@ -3,6 +3,9 @@ using HoursOfProgramming.View;
 
 namespace HoursOfProgramming.Presenter
 {
+    /// <summary>
+    /// Выводит количество часов на форму.
+    /// </summary>
     public class StopwatchLaunch
     {
         private TimeInFile _timeInFile;
