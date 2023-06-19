@@ -39,7 +39,6 @@ namespace HoursOfProgramming.Model
         private bool IsExistence(string appStorageFolder)
         {
             var fileInfo = new FileInfo(appStorageFolder);
-
             return fileInfo.Exists;
         }
 

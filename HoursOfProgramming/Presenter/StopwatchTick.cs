@@ -8,7 +8,7 @@ namespace HoursOfProgramming.Presenter
     /// </summary>
     public class StopwatchTick
     {
-        private TimeInApp _timeInApp;
+        private ITimeData _timeInApp;
         private ICorrect _correct;
         private ITick _tick;
 
@@ -19,7 +19,7 @@ namespace HoursOfProgramming.Presenter
             _tick = tick;
         }
 
-        public TimeInApp Tick()
+        public ITimeData Tick()
         {
             _timeInApp = _tick.Update();
             if (_correct.IsCorrect(_timeInApp.Seconds))

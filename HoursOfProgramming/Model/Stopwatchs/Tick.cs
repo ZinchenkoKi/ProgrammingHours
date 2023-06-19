@@ -1,18 +1,17 @@
-﻿using HoursOfProgramming.Model.Data;
-using HoursOfProgramming.View;
+﻿using HoursOfProgramming.View;
 
 namespace HoursOfProgramming.Model.Stopwatchs
 {
     public class Tick : ITick
     {
-        private TimeInApp _timeInApp;
+        private ITimeData _timeInApp;
 
-        public Tick(TimeInApp timeInApp) 
+        public Tick(ITimeData timeInApp) 
         {
             _timeInApp = timeInApp;
         }
 
-        public TimeInApp Update()
+        public ITimeData Update()
         {
             _timeInApp.Seconds++;
             return _timeInApp;

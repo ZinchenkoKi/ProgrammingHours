@@ -15,11 +15,10 @@ namespace HoursOfProgramming.Presenter
             _stopwatch = stopwatch;
         }
 
-
-        public StopwatchState Start()
+        public IStopwatch Start()
         {
-            var stopwatch = new Stopwatch();
-            return stopwatch.Start(_stopwatch.Start, _stopwatch.TimerEnabled);
+            var stopwatch = new Stopwatch(_stopwatch);
+            return stopwatch.Start();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace HoursOfProgramming.Model.Stopwatchs
+﻿using HoursOfProgramming.View;
+
+namespace HoursOfProgramming.Model.Stopwatchs
 {
     /// <summary>
     /// Производит запуск и остановку секундомера.
@@ -6,11 +8,11 @@
     /// </summary>
     public class Stopwatch
     {
-        private StopwatchState _state;
+        private IStopwatch _state;
 
-        public Stopwatch()
+        public Stopwatch(IStopwatch state)
         {
-            _state = new StopwatchState();
+            _state = state; 
         }
 
         /// <summary>
@@ -20,16 +22,15 @@
         /// <param name="text"> Текст кнопки Старт </param>
         /// <param name="timerEnabled">Состояние таймера</param>
         /// <returns></returns>
-        public StopwatchState Start(string text, bool timerEnabled)
+        public IStopwatch Start()
         {
-            if (IsActive(text))
+            _state.TimerEnabled = IsActive(_state.Start);
+            if (_state.TimerEnabled)
             {
-                _state.TimerEnabled = true;
-                _state.Text = "STOP";
+                _state.Start = "STOP";
                 return _state;
             }
-            _state.TimerEnabled = false;
-            _state.Text = "START";
+            _state.Start = "START";
             return _state;
         }
 
@@ -38,7 +39,7 @@
         /// </summary>
         /// <param name="text"> Текст кнопки Старт </param>
         /// <returns></returns>
-        private bool IsActive(string text)
+        public bool IsActive(string text)
         {
             return text == "START";
         }

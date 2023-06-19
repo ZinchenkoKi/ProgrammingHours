@@ -8,9 +8,9 @@ using HoursOfProgramming.Model.Stopwatchs;
 
 namespace HoursOfProgramming
 {
-    public partial class Form1 : Form, IStopwatch, ITime, IAllHours
+    public partial class Form1 : Form, IStopwatch, IAllHours, ITimeData
     {
-        TimeInApp timeInApp = new TimeInApp();
+        ITimeData timeInApp = new TimeInApp();
 
         public string Start
         {
@@ -24,22 +24,22 @@ namespace HoursOfProgramming
             set => Timer.Enabled = value;
         }
 
-        public string Hours
+        public int Hours
         {
-            get => HoursLabel.Text;
-            set => HoursLabel.Text = value;
+            get => Convert.ToInt32(HoursLabel.Text);
+            set => HoursLabel.Text = value.ToString();
         }
 
-        public string Minutes
+        public int Minutes
         {
-            get => MinutesLabel.Text;
-            set => MinutesLabel.Text = value;
+            get => Convert.ToInt32(MinutesLabel.Text);
+            set => MinutesLabel.Text = value.ToString();
         }
 
-        public string Seconds
+        public int Seconds
         {
-            get => SecondsLabel.Text;
-            set => SecondsLabel.Text = value;
+            get => Convert.ToInt32(SecondsLabel.Text);
+            set => SecondsLabel.Text = value.ToString();
         }
 
         public string MaximumHours 
@@ -62,10 +62,10 @@ namespace HoursOfProgramming
 
         private void StopwatchStart(object sender, EventArgs e)
         {
-            var state = new StopwatchState();
+            IStopwatch state = new StopwatchState();
             var stopwatcOn = new StopwatchOn(this);
             state = stopwatcOn.Start();
-            Start = state.Text;
+            Start = state.Start;
             TimerEnabled = state.TimerEnabled;
         }
 
@@ -75,9 +75,9 @@ namespace HoursOfProgramming
             var correct = new CorrectData();
             var stopwatch = new StopwatchTick(tick, correct);
             timeInApp = stopwatch.Tick();
-            Hours = timeInApp.Hours.ToString();
-            Minutes = timeInApp.Minutes.ToString();
-            Seconds = timeInApp.Seconds.ToString();
+            Hours = timeInApp.Hours;
+            Minutes = timeInApp.Minutes;
+            Seconds = timeInApp.Seconds;
         }
 
         private void CloseApplication(object sender, EventArgs e)
@@ -87,8 +87,8 @@ namespace HoursOfProgramming
             var read = new Read(path);
             var record = new Record(path);
             var recount = new Recount(correct);
-            var stopwatch = new StopwatchClose(timeInApp, read, record, recount);
-            stopwatch.Close();
+            var stopwatch = new StopwatchClose(timeInApp, read, record);
+            stopwatch.Close(recount);
         }
     }
 }
